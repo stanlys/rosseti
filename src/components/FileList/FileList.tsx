@@ -7,6 +7,8 @@ import { useAppDispatch } from "../../store/hooks";
 import { API_ENDPOINTS } from "../../api/URL";
 import { useLocation } from "react-router";
 import WebViewer from "@pdftron/webviewer";
+import pdf1 from "./../../assets/1.pdf";
+import pdf2 from "./../../assets/2.pdf";
 
 const INITIAL_STATE: IDocument = {
   _id: "",
@@ -60,17 +62,19 @@ const FileList = () => {
     //dispatch(getLetter)
   }, []);
   const MOCK_DOCS = [
-    { uri: `${API_ENDPOINTS.BASE}/2023/2023-02-13-164212.pdf` },
+    { uri: pdf1 },
     { uri: `${API_ENDPOINTS.BASE}/2023/2023-02-13-164547.pdf` },
     { uri: `${API_ENDPOINTS.BASE}/2023/2023-02-13-164222.doc` },
     { uri: `${API_ENDPOINTS.BASE}/2023/2023-02-13-164554.xlsx` },
   ];
 
+  const DOCS = [pdf1, pdf2];
+
   useEffect(() => {
     WebViewer(
       {
         path: "/lib",
-        initialDoc: `${API_ENDPOINTS.BASE}/2023/2023-02-13-164222.doc`,
+        initialDoc: DOCS,
       },
       viewer.current as HTMLDivElement
     ).then((instance) => {
@@ -92,7 +96,7 @@ const FileList = () => {
       </div>
       <Divider />
 
-      <DocViewer
+      {/* <DocViewer
         documents={MOCK_DOCS}
         pluginRenderers={DocViewerRenderers}
         config={{
@@ -104,7 +108,7 @@ const FileList = () => {
             showLoadingTimeout: false, // false if you want to disable or number to provide your own value (ms)
           },
         }}
-      />
+      /> */}
     </Box>
   );
 };
