@@ -8,6 +8,8 @@ import OlMap from "ol/Map";
 import OlView from "ol/View";
 import OlLayerTile from "ol/layer/Tile";
 import OlSourceOsm from "ol/source/OSM";
+import LayerSwitcher from "@terrestris/react-geo/dist/LayerSwitcher/LayerSwitcher";
+
 import XYZ from "ol/source/XYZ";
 import OlSourceTileWMS from "ol/source/TileWMS";
 import BackgroundLayerChooser from "@terrestris/react-geo/dist/BackgroundLayerChooser/BackgroundLayerChooser";
@@ -18,7 +20,7 @@ const layers = [
     source: new OlSourceOsm(),
     properties: {
       name: "OSM",
-      isBackgroundLayer: true,
+      isBackgroundLayer: false,
     },
   }),
   new OlLayerTile({
@@ -33,6 +35,7 @@ const layers = [
     },
   }),
 ];
+
 const openlayersMap = new OlMap({
   view: new OlView({
     center: [801045, 6577113],
@@ -49,13 +52,26 @@ const ObjectMap = () => {
   }, []);
 
   return (
-    <MapComponent
-      id={"usemap-map"}
-      map={map as OlMap}
-      style={{
-        height: "400px",
-      }}
-    />
+    <>
+      <MapComponent
+        lang="ru_RU"
+        id={"usemap-map"}
+        map={map as OlMap}
+        style={{
+          height: "400px",
+        }}
+      />
+      <LayerSwitcher
+        layers={layers}
+        map={map as OlMap}
+        style={{
+          position: "relative",
+          bottom: "80px",
+          left: "0px",
+          zIndex: 2,
+        }}
+      />
+    </>
   );
 };
 
@@ -63,7 +79,6 @@ const BackgroundChooserExample = () => {
   return (
     <MapContext.Provider value={openlayersMap}>
       <ObjectMap />
-      <BackgroundLayerChooser layers={layers} />
     </MapContext.Provider>
   );
 };

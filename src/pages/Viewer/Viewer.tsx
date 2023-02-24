@@ -4,6 +4,7 @@ import React from "react";
 import BackgroundChooserExample from "../../components/Map/ObjectMap";
 import ObjectMap from "../../components/Map/ObjectMap";
 
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
