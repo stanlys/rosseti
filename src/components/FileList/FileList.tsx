@@ -19,36 +19,6 @@ const INITIAL_STATE: IDocument = {
   size: 0,
 };
 
-const MyNoRenderer = ({
-  document,
-  fileName,
-}: {
-  document: any;
-  fileName: string;
-}) => {
-  const fileText = fileName || document?.fileType || "";
-  console.log("noRender-", fileText);
-  if (fileText) {
-    return <div>No Renderer Error! ({fileText})</div>;
-  }
-
-  return <div>No Renderer Error!</div>;
-};
-
-// const MyLoadingRenderer = ({ document, fileName }) => {
-//   const fileText = fileName || document?.fileType || "";
-//   const ext = fileText.split(".").pop();
-//   if (ext === "doc" || ext === "docx")
-//     return <Typography> Документ Word </Typography>;
-//   console.log("loading-", fileText);
-
-//   if (fileText) {
-//     return <div>Loading Renderer ({fileText})...</div>;
-//   }
-
-//   return <div>Loading Renderer...</div>;
-// };
-
 const FileList = () => {
   const a = formatBytes(10);
   const [docs, setDocs] = useState<IDocument>(INITIAL_STATE);
@@ -97,19 +67,6 @@ const FileList = () => {
       </div>
       <Divider />
 
-      {/* <DocViewer
-        documents={MOCK_DOCS}
-        pluginRenderers={DocViewerRenderers}
-        config={{
-          noRenderer: {
-            overrideComponent: MyNoRenderer,
-          },
-          loadingRenderer: {
-            overrideComponent: MyLoadingRenderer,
-            showLoadingTimeout: false, // false if you want to disable or number to provide your own value (ms)
-          },
-        }}
-      /> */}
     </Box>
   );
 };

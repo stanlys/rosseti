@@ -10,6 +10,7 @@ import ListDelivery from "./pages/Settings/Delivery/List/ListDelivery";
 import AddOutLetter from "./pages/Outgoing/AddLetter/AddOutLetter";
 import FileList from "./components/FileList/FileList";
 import LoginForm from "./pages/auth/login-form/LoginForm";
+import Viewer from "./pages/Viewer/Viewer";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: "filelist",
         element: <FileList />,
+      },
+      {
+        path: "object",
+        element: <Viewer />,
       },
       {
         path: "setting",
