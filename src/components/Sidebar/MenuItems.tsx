@@ -5,7 +5,7 @@ import MenuCaption from "./MenuCaption";
 
 export const mainListItems = (
   <>
-    <MenuCaption caption="Реестры" />
+    <MenuCaption caption="ОЭСХ" />
     {MAIN_MENU.map(({ caption, icon, link }) => (
       <MenuButton caption={caption} link={link} icon={icon} key={caption} />
     ))}

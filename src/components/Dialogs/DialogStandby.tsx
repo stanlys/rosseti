@@ -31,13 +31,14 @@ const StandbyFormDialog: React.FC<StandbyFormDialogProps> = ({
       date: Date.now(),
       sender: FIO,
       outNumber: "-",
-      dateOrder: " ",
+      dateOrder: null,
       executor: "-",
       inNumber: "-",
       letterTitle: "-",
       letterType: "Письмо",
       receiver: "-",
-      ResponseToIncoming: "-",
+      files: [],
+      responseToIncoming: "",
     };
     enqueueSnackbar("Успешно добавлено", { variant: "success" });
     dispatch(createOutgoingLetter(letter));
@@ -45,16 +46,14 @@ const StandbyFormDialog: React.FC<StandbyFormDialogProps> = ({
   };
 
   return (
-    <Dialog open={isOpen} onClose={toggleOpen}>
-      <DialogTitle>Резервирование</DialogTitle>
+    <Dialog open={isOpen} onClose={toggleOpen} fullWidth>
+      <DialogTitle>Формирование отчета</DialogTitle>
       <DialogContent>
-        <DialogContentText>
-          Укажите ФИО сотрудника, который просит исходящий номер.
-        </DialogContentText>
+        <DialogContentText>Укажите наименование отчета</DialogContentText>
         <TextField
           autoFocus
           margin="dense"
-          label="Кто просит исходящий номер"
+          label="Наименование отчета"
           type="text"
           fullWidth
           value={FIO}
@@ -64,7 +63,7 @@ const StandbyFormDialog: React.FC<StandbyFormDialogProps> = ({
       </DialogContent>
       <DialogActions>
         <Button onClick={toggleOpen}>Отменить</Button>
-        <Button onClick={addEmptyLetter}>Добавить</Button>
+        <Button onClick={addEmptyLetter}>Создать</Button>
       </DialogActions>
     </Dialog>
   );

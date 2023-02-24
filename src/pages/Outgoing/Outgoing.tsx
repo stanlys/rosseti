@@ -39,7 +39,7 @@ const Outgoing = () => {
     <Stack>
       <Box className={style.buttonGroup}>
         <Link to="/addin">
-          <Button variant="outlined"> Создать письмо </Button>
+          <Button variant="outlined"> Добавить ОЭСХ </Button>
         </Link>
         <ButtonStandby />
       </Box>

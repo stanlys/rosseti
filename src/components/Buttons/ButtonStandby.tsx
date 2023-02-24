@@ -12,7 +12,7 @@ const ButtonStandby = () => {
   return (
     <>
       <Button variant="outlined" onClick={toggleOpen}>
-        Резерв исходящего
+        Сформировать отчет
       </Button>
       <StandbyFormDialog isOpen={open} toggleOpen={toggleOpen} />
     </>
