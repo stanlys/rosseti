@@ -1,0 +1,9 @@
+@import "./../../style/index.scss";
+
+.caption {
+  color: $font-link-color;
+
+  &:hover {
+    color: $font-hover-color;
+  }
+}
