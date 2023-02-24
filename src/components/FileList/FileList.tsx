@@ -9,6 +9,7 @@ import { useLocation } from "react-router";
 import WebViewer from "@pdftron/webviewer";
 import pdf1 from "./../../assets/1.pdf";
 import pdf2 from "./../../assets/2.pdf";
+import pdf3 from "./../../assets/3.pdf";
 
 const INITIAL_STATE: IDocument = {
   _id: "",
@@ -34,19 +35,19 @@ const MyNoRenderer = ({
   return <div>No Renderer Error!</div>;
 };
 
-const MyLoadingRenderer = ({ document, fileName }) => {
-  const fileText = fileName || document?.fileType || "";
-  const ext = fileText.split(".").pop();
-  if (ext === "doc" || ext === "docx")
-    return <Typography> Документ Word </Typography>;
-  console.log("loading-", fileText);
+// const MyLoadingRenderer = ({ document, fileName }) => {
+//   const fileText = fileName || document?.fileType || "";
+//   const ext = fileText.split(".").pop();
+//   if (ext === "doc" || ext === "docx")
+//     return <Typography> Документ Word </Typography>;
+//   console.log("loading-", fileText);
 
-  if (fileText) {
-    return <div>Loading Renderer ({fileText})...</div>;
-  }
+//   if (fileText) {
+//     return <div>Loading Renderer ({fileText})...</div>;
+//   }
 
-  return <div>Loading Renderer...</div>;
-};
+//   return <div>Loading Renderer...</div>;
+// };
 
 const FileList = () => {
   const a = formatBytes(10);
@@ -68,7 +69,7 @@ const FileList = () => {
     { uri: `${API_ENDPOINTS.BASE}/2023/2023-02-13-164554.xlsx` },
   ];
 
-  const DOCS = [pdf1, pdf2];
+  const DOCS = [pdf1, pdf2, pdf3];
 
   useEffect(() => {
     WebViewer(
@@ -87,11 +88,11 @@ const FileList = () => {
     <Box>
       <List></List>
       <div className="MyComponent">
-        <div className="header">React sample</div>
+        <div className="header">Просмотр документов</div>
         <div
           className="webviewer"
           ref={viewer}
-          style={{ height: "100vh" }}
+          style={{ height: "80vh" }}
         ></div>
       </div>
       <Divider />

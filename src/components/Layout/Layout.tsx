@@ -12,6 +12,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import { mainListItems, secondaryListItems } from "../Sidebar/MenuItems";
 import KTHeader from "../KTHeader/KTHeader";
 import back from "./../../../assets/main.jpg";
+import { Divider } from "@mui/material";
 
 function Copyright(props: any) {
   return (
@@ -78,6 +79,7 @@ const DashboardContent = () => {
           </Box>
         </Box>
       </Box>
+      <Divider />
       <StickyFooter />
     </ThemeProvider>
   );
