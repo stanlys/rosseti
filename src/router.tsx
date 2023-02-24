@@ -9,6 +9,7 @@ import Outgoing from "./pages/Outgoing/Outgoing";
 import ListDelivery from "./pages/Settings/Delivery/List/ListDelivery";
 import AddOutLetter from "./pages/Outgoing/AddLetter/AddOutLetter";
 import FileList from "./components/FileList/FileList";
+import LoginForm from "./pages/auth/login-form/LoginForm";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { index: true, element: <Outgoing /> },
+      { path: "auth", element: <LoginForm /> },
       { path: "out", element: <Incoming /> },
       {
         path: "letter",

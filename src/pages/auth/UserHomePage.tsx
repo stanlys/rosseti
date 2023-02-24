@@ -1,53 +1,43 @@
-import { useState } from 'react';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Avatar from '@mui/material/Avatar';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Alert, AlertTitle, FormHelperText, Paper } from '@mui/material';
-import { FormikValues, useFormik } from 'formik';
-import { Email } from '@mui/icons-material';
-import ErrorIcon from '@mui/icons-material/Error';
-import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../../store/hooks';
-import { INITIAL_VALUES_FORM } from './login-form/сonstants';
-import styles from './login-form/LoginForm.module.scss';
-import { loginSchema } from './login-form/validationSchemas';
-import { deleteUser, updateUser } from '../../api/users';
-import { deleteUserData, UpdatedUserInfo, updateUserData } from './authSlice';
+import { useState } from "react";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Input from "@mui/material/Input";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Avatar from "@mui/material/Avatar";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Alert, AlertTitle, FormHelperText, Paper } from "@mui/material";
+import { FormikValues, useFormik } from "formik";
+import { Email } from "@mui/icons-material";
+import ErrorIcon from "@mui/icons-material/Error";
+import { useDispatch } from "react-redux";
+import { INITIAL_VALUES_FORM } from "./login-form/сonstants";
+import styles from "./login-form/LoginForm.module.scss";
+import { loginSchema } from "./login-form/validationSchemas";
 
 const UserHomePage = (): JSX.Element => {
   const [isShowPassword, setShowPassword] = useState<boolean>(false);
   const [isServerError, setIsServerError] = useState<boolean>(false);
   const [isServerSuccess, setIsServerSuccess] = useState<boolean>(false);
-  const { id } = useAppSelector((state) => state.authorization);
+  // const { id } = useAppSelector((state) => state.authorization);
 
   const dispatch = useDispatch();
 
-  const deleteLoggedUser = async (): Promise<void> => {
-    await deleteUser(id);
-    dispatch(deleteUserData());
-  };
+  // const deleteLoggedUser = async (): Promise<void> => {
+  //   await deleteUser(id);
+  //   dispatch(deleteUserData());
+  // };
 
   const submitLoginForm = async (values: FormikValues): Promise<void> => {
-    const updatedUserData: UpdatedUserInfo = {
-      password: values.userPassword as string,
-      email: values.userEmail as string,
-    };
-    try {
-      await updateUser(id, updatedUserData);
-      dispatch(updateUserData(updatedUserData));
-      setIsServerSuccess(true);
-    } catch {
-      setIsServerError(true);
-    }
+    if (values.userEmail == "admin@admin.ru" && values.userPassword == "admin")
+      console.log("Yes");
+
+    console.log(values);
   };
 
   const { values, touched, handleSubmit, handleChange, errors } = useFormik({
@@ -61,12 +51,14 @@ const UserHomePage = (): JSX.Element => {
   };
 
   return (
-    <Paper elevation={3} style={{ margin: '2rem', padding: '2rem' }}>
+    <Paper elevation={3} style={{ margin: "2rem", padding: "2rem" }}>
       <form onSubmit={handleSubmit}>
         <Box className={styles.loginForm}>
           {isServerError && (
             <>
-              <Avatar className={styles.error}>{isServerError && <ErrorIcon />}</Avatar>
+              <Avatar className={styles.error}>
+                {isServerError && <ErrorIcon />}
+              </Avatar>
               <FormHelperText error>
                 <span>Incorrect email or password, please try again</span>
               </FormHelperText>
@@ -96,12 +88,14 @@ const UserHomePage = (): JSX.Element => {
                 </InputAdornment>
               }
             />
-            {touched.userEmail && <FormHelperText error>{errors.userEmail}</FormHelperText>}
+            {touched.userEmail && (
+              <FormHelperText error>{errors.userEmail}</FormHelperText>
+            )}
           </FormControl>
           <FormControl className={styles.input} variant="standard">
             <InputLabel>Password</InputLabel>
             <Input
-              type={isShowPassword ? 'text' : 'password'}
+              type={isShowPassword ? "text" : "password"}
               name="userPassword"
               value={values.userPassword}
               required
@@ -118,7 +112,9 @@ const UserHomePage = (): JSX.Element => {
                 </InputAdornment>
               }
             />
-            {touched.userPassword && <FormHelperText error>{errors.userPassword}</FormHelperText>}
+            {touched.userPassword && (
+              <FormHelperText error>{errors.userPassword}</FormHelperText>
+            )}
           </FormControl>
           <Stack className={styles.btnArea}>
             <Button variant="contained" className={styles.input} type="submit">
@@ -128,7 +124,7 @@ const UserHomePage = (): JSX.Element => {
               variant="contained"
               className={styles.input}
               color="error"
-              onClick={deleteLoggedUser}
+              onClick={() => console.log("delete")}
             >
               DELETE PROFILE
             </Button>

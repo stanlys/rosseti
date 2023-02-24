@@ -1,10 +1,18 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import logo from "./../../assets/Logo.png";
-import { Box } from "@mui/material";
+import { NavLink, useNavigate } from "react-router-dom";
+import logo from "./../../../assets/logo.png";
+import { Box, Button, Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useAuth } from "../../hooks/useAuth";
 
 const KTHeader = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const userExit = () => {
+    localStorage.removeItem("auth");
+    navigate("/");
+  };
+
   return (
     <Box
       component={"div"}
@@ -22,10 +30,18 @@ const KTHeader = () => {
       }}
     >
       <NavLink to={"/"}>
-        <Box component={"img"} src={logo} width={"5rem"}></Box>
+        <Box component={"img"} src={logo} width={"7rem"}></Box>
       </NavLink>
       <Box>
-        <AccountCircleIcon fontSize="large" />
+        {auth != false && (
+          <Box display={"flex"} alignItems={"center"} gap={1}>
+            <Typography variant="body1"> {auth} </Typography>
+            <AccountCircleIcon fontSize="large" />
+            <Button variant="text" onClick={userExit}>
+              Выход
+            </Button>
+          </Box>
+        )}
       </Box>
     </Box>
   );

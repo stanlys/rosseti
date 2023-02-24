@@ -71,6 +71,7 @@ const AddLetter = () => {
       <Box component={"form"} onSubmit={submitForm}>
         <Paper elevation={2} className={style.form}>
           <DateSelect
+            label="Выберете дату"
             changeDate={changeDate}
             value={date}
             error={errors.date as string}

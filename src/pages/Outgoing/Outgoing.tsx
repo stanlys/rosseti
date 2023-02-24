@@ -16,10 +16,16 @@ import style from "./Outgoing.module.scss";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import ButtonStandby from "../../components/Buttons/ButtonStandby";
 import { getAllOutgoingLetter } from "../../store/outgoing/thunks";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 const Outgoing = () => {
   const gridStyle = { height: "82vh", color: "#223133" };
+  const navigate = useNavigate();
+  const isAuth = useAuth();
+  if (!isAuth) {
+    navigate("/auth");
+  }
 
   const letters = useAppSelector((state) => state.outgoing);
   const dispatch = useAppDispatch();

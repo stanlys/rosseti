@@ -2,7 +2,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
@@ -12,6 +11,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import { mainListItems, secondaryListItems } from "../Sidebar/MenuItems";
 import KTHeader from "../KTHeader/KTHeader";
+import back from "./../../../assets/main.jpg";
 
 function Copyright(props: any) {
   return (
@@ -41,6 +41,7 @@ const DashboardContent = () => {
       <Box
         sx={{
           display: "flex",
+          backgroundImage: back,
           backgroundColor: (theme) =>
             theme.palette.mode === "light"
               ? theme.palette.grey[100]
@@ -66,7 +67,13 @@ const DashboardContent = () => {
           }}
         >
           <Box sx={{ m: 2, minHeight: "90%" }}>
-            <Paper sx={{ minWidth: "100%", minHeight: "91vh", p: 2 }}>
+            <Paper
+              sx={{
+                minWidth: "100%",
+                minHeight: "91vh",
+                p: 2,
+              }}
+            >
               <Outlet />
             </Paper>
           </Box>
