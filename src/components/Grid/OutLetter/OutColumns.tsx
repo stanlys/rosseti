@@ -7,68 +7,48 @@ import { ActionDelete } from "./ActionDeleteOutLetter";
 export const OUT_LETTER_COLUMNS: TypeColumn[] = [
   ...ActionEditPreview,
   {
-    name: "outNumber",
-    header: "Исходящий номер",
+    name: "inv",
+    header: "Инвентарный номер",
     maxWidth: 150,
     defaultFlex: 1.3,
 
     style: { color: "primary", fontWeight: "bold" },
   },
   {
-    name: "date",
-    header: "Дата",
-    dateFormat: "DD.MM.YYYY",
+    name: "res",
+    header: "РЭС",
     minWidth: 10,
     defaultFlex: 0.6,
-    filterEditor: DateFilter,
-    filterEditorProps: {
-      dateFormat: "DD.MM.YYYY",
-      highlightWeekends: true,
-      placeholder: "введите дату",
-    },
-    render: ({ value }: { value: string }) => {
-      return moment(value).format("DD.MM.YYYY");
-    },
   },
-  { name: "inNumber", header: "Входящий номер", defaultFlex: 1 },
+  { name: "workName", header: "Наименование", defaultFlex: 1 },
   {
-    name: "dateOrder",
-    header: "Дата получения",
-    defaultFlex: 1,
-    dateFormat: "DD.MM.YYYY",
-    filterEditor: DateFilter,
-    filterEditorProps: {
-      dateFormat: "DD.MM.YYYY",
-      highlightWeekends: true,
-      placeholder: "введите дату",
-    },
-    render: ({ value }: { value: string }) => {
-      return value === null ? "-" : moment(value).format("DD.MM.YYYY");
-    },
-  },
-  {
-    name: "letterType",
-    header: "Тип",
+    name: "length",
+    header: "Протяженность",
     defaultFlex: 1,
   },
-  { name: "receiver", header: "Получатель", defaultFlex: 1 },
+  {
+    name: "classV",
+    header: "Класс",
+    defaultFlex: 1,
+  },
+  { name: "executor", header: "Получатель", defaultFlex: 1 },
   { name: "sender", header: "Отправитель", defaultFlex: 1 },
-  { name: "executor", header: "Исполнитель", defaultFlex: 1 },
-  { name: "letterTitle", header: "Содержание", defaultFlex: 1 },
-  { name: "ResponseToIncoming", header: "Ответ на входящий", defaultFlex: 1 },
+  { name: "kpResultNumber", header: "Исполнитель", defaultFlex: 1 },
+  { name: "kpResultDate", header: "Дата внесения в ЕГРН", defaultFlex: 1 },
+  { name: "zouitNumber", header: "ЗОУИТ", defaultFlex: 1 },
   ...ActionDelete,
 ];
 
 export const OUTGOING_COLUMNS_ORDER: Array<string> = [
   "preview",
-  "date",
-  "outNumber",
-  "receiver",
-  "letterTitle",
-  "sender",
+  "inv",
+  "res",
+  "workName",
+  "length",
+  "classV",
   "executor",
-  "inNumber",
-  "dateOrder",
-  "ResponseToIncoming",
+  "kpResultNumber",
+  "kpResultDate",
+  "zouitNumber",
   "delete",
 ];

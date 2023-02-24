@@ -18,6 +18,7 @@ import ButtonStandby from "../../components/Buttons/ButtonStandby";
 import { getAllOutgoingLetter } from "../../store/outgoing/thunks";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { KL } from "./../../assets/kl";
 
 const Outgoing = () => {
   const gridStyle = { height: "82vh", color: "#223133" };
@@ -45,7 +46,7 @@ const Outgoing = () => {
       <LettersList
         columns={OUT_LETTER_COLUMNS}
         style={gridStyle}
-        data={letters.letters}
+        data={KL}
         filter={filterValue}
         columnOrderDefault={OUTGOING_COLUMNS_ORDER}
         LocalStorageKey="OUTGOING"

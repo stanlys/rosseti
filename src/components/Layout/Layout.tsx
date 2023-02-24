@@ -41,7 +41,6 @@ const DashboardContent = () => {
       <Box
         sx={{
           display: "flex",
-          backgroundImage: back,
           backgroundColor: (theme) =>
             theme.palette.mode === "light"
               ? theme.palette.grey[100]
