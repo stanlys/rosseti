@@ -1,9 +1,7 @@
 import { Tab, Tabs, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import BackgroundChooserExample from "../../components/Map/ObjectMap";
-import ObjectMap from "../../components/Map/ObjectMap";
-
+import OMap from "../../components/Map/ObjectMap";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -52,7 +50,7 @@ const Viewer = () => {
         Item Two
       </TabPanel>
       <TabPanel value={page} index={2}>
-        <BackgroundChooserExample />
+        <OMap />
       </TabPanel>
     </Box>
   );

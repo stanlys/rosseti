@@ -7,14 +7,72 @@ import { useMap } from "@terrestris/react-geo/dist/Hook/useMap";
 import OlMap from "ol/Map";
 import OlView from "ol/View";
 import OlLayerTile from "ol/layer/Tile";
+import { Vector as VectorLayer } from "ol/layer";
 import OlSourceOsm from "ol/source/OSM";
+import { Vector } from "ol/source";
+import GeoJSON from "ol/format/GeoJSON";
 import LayerSwitcher from "@terrestris/react-geo/dist/LayerSwitcher/LayerSwitcher";
+import { Circle as CircleStyle, Fill, Stroke, Style } from "ol/style";
 
 import XYZ from "ol/source/XYZ";
 import OlSourceTileWMS from "ol/source/TileWMS";
 import BackgroundLayerChooser from "@terrestris/react-geo/dist/BackgroundLayerChooser/BackgroundLayerChooser";
 
 import React from "react";
+import { MY_PATH } from "./MOCK_MAP";
+
+const styles = {
+  LineString: new Style({
+    stroke: new Stroke({
+      color: "green",
+      width: 1,
+    }),
+  }),
+  MultiLineString: new Style({
+    stroke: new Stroke({
+      color: "green",
+      width: 1,
+    }),
+  }),
+  MultiPolygon: new Style({
+    stroke: new Stroke({
+      color: "yellow",
+      width: 1,
+    }),
+    fill: new Fill({
+      color: "rgba(255, 255, 0, 0.1)",
+    }),
+  }),
+  Polygon: new Style({
+    stroke: new Stroke({
+      color: "blue",
+      lineDash: [4],
+      width: 3,
+    }),
+    fill: new Fill({
+      color: "rgba(0, 0, 255, 0.1)",
+    }),
+  }),
+  Circle: new Style({
+    stroke: new Stroke({
+      color: "red",
+      width: 2,
+    }),
+    fill: new Fill({
+      color: "rgba(255,0,0,0.2)",
+    }),
+  }),
+};
+
+const vectorSource = new Vector({
+  features: new GeoJSON().readFeatures(MY_PATH),
+});
+
+const vectorLayer = new VectorLayer({
+  source: vectorSource,
+  style: styles.LineString,
+});
+
 const layers = [
   new OlLayerTile({
     source: new OlSourceOsm(),
@@ -23,6 +81,7 @@ const layers = [
       isBackgroundLayer: false,
     },
   }),
+  vectorLayer,
   new OlLayerTile({
     visible: false,
     source: new XYZ({
@@ -56,7 +115,7 @@ const openlayersMap = new OlMap({
     center: [4428591.824187, 6720605.980535],
     zoom: 9,
   }),
-  layers,
+  layers: [vectorLayer],
 });
 
 const ObjectMap = () => {
@@ -90,7 +149,7 @@ const ObjectMap = () => {
   );
 };
 
-const BackgroundChooserExample = () => {
+const OMap = () => {
   return (
     <MapContext.Provider value={openlayersMap}>
       <ObjectMap />
@@ -98,4 +157,4 @@ const BackgroundChooserExample = () => {
   );
 };
 
-export default BackgroundChooserExample;
+export default OMap;
