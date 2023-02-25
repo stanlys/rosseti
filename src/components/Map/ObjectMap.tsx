@@ -26,11 +26,26 @@ const layers = [
   new OlLayerTile({
     visible: false,
     source: new XYZ({
+      url: "https://core-renderer-tiles.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}&scale=1&lang=ru_RU",
+      // urls: [
+      //   "https://core-sat.maps.yandex.net/tiles?l=sat&x={x}&y={y}&z={z}&scale=1&lang=ru_RU",
+      //   "https://core-renderer-tiles.maps.yandex.net/tiles?l=skl&x={x}&y={y}&z={z}&scale=1&lang=ru_RU",
+      // ],
+      maxZoom: 19,
+    }),
+    properties: {
+      name: "Yandex",
+      isBackgroundLayer: true,
+    },
+  }),
+  new OlLayerTile({
+    visible: true,
+    source: new XYZ({
       url: "https://core-sat.maps.yandex.net/tiles?l=sat&x={x}&y={y}&z={z}&scale=1&lang=ru_RU",
       maxZoom: 19,
     }),
     properties: {
-      name: "PKK",
+      name: "Космоснимки",
       isBackgroundLayer: true,
     },
   }),
@@ -38,7 +53,7 @@ const layers = [
 
 const openlayersMap = new OlMap({
   view: new OlView({
-    center: [801045, 6577113],
+    center: [4428591.824187, 6720605.980535],
     zoom: 9,
   }),
   layers,
@@ -58,7 +73,7 @@ const ObjectMap = () => {
         id={"usemap-map"}
         map={map as OlMap}
         style={{
-          height: "400px",
+          height: "70vh",
         }}
       />
       <LayerSwitcher
