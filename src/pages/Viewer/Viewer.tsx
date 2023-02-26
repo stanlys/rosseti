@@ -1,6 +1,7 @@
 import { Tab, Tabs, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import LeafletMap from "../../components/Map/LeafletMap";
 import OMap from "../../components/Map/ObjectMap";
 
 interface TabPanelProps {
@@ -41,7 +42,8 @@ const Viewer = () => {
       <Tabs value={page} onChange={changePage} centered>
         <Tab label="Характеристики ОЭСХ" />
         <Tab label="Документы" />
-        <Tab label="Карта" />
+        <Tab label="Карта OpenLayers" />
+        <Tab label="Карта Leaflet" />
       </Tabs>
       <TabPanel value={page} index={0}>
         Item One
@@ -51,6 +53,9 @@ const Viewer = () => {
       </TabPanel>
       <TabPanel value={page} index={2}>
         <OMap />
+      </TabPanel>
+      <TabPanel value={page} index={3}>
+        <LeafletMap />
       </TabPanel>
     </Box>
   );
