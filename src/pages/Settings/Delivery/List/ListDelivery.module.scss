@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tableCaption {
+  font-weight: 700;
+  background-color: rgba(gray, $alpha: 0.1);
+}
