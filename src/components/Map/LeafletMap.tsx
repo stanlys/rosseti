@@ -5,11 +5,12 @@ import {
   Polyline,
   Popup,
   TileLayer,
+  Tooltip,
   useMap,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { MY_DRAW_PATH, RUN_26 } from "./MOCK_MAP";
-import { LatLngExpression } from "leaflet";
+import { CRS, LatLngExpression } from "leaflet";
 
 const polygon = [
   [51.515, 39.09],
@@ -71,12 +72,16 @@ const LeafletMap = () => {
       zoom={13}
       scrollWheelZoom={true}
       style={{ width: "75vw", height: "70vh" }}
+      crs={CRS.EPSG3395}
     >
-      <TileLayer
+      {/* <TileLayer
         attribution=""
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Polyline positions={RUN_26} pathOptions={purpleOptions} />
+      /> */}
+      <TileLayer url="https://core-sat.maps.yandex.net/tiles?l=sat&x={x}&y={y}&z={z}&scale=1&lang=ru_RU" />
+      <Polyline positions={RUN_26} pathOptions={purpleOptions}>
+        <Tooltip sticky>Название объекта</Tooltip>
+      </Polyline>
       <Marker position={[51.618971, 38.962624]}>
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
