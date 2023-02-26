@@ -5,6 +5,7 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import RequestPageIcon from "@mui/icons-material/RequestPage";
 import PlaceIcon from "@mui/icons-material/Place";
 import SignpostIcon from "@mui/icons-material/Signpost";
+import ElectricBoltIcon from "@mui/icons-material/ElectricBolt";
 
 export interface MenuProps {
   link: string;
@@ -13,12 +14,12 @@ export interface MenuProps {
 }
 
 export const MAIN_MENU: MenuProps[] = [
-  { caption: "ВЛ 0,4 кВ", link: "/", icon: <OutboxIcon /> },
-  { caption: "ВЛ 10 кВ", link: "/out", icon: <MoveToInboxIcon /> },
-  { caption: "ВЛ 35 кВ и выше", link: "/letter", icon: <LocalShippingIcon /> },
-  { caption: "КЛ 0,4 кВ", link: "/contract", icon: <RequestPageIcon /> },
-  { caption: "КЛ 10 кВ", link: "/contract", icon: <RequestPageIcon /> },
-  { caption: "Площадные", link: "/contract", icon: <RequestPageIcon /> },
+  { caption: "ВЛ 0,4 кВ", link: "/", icon: <ElectricBoltIcon /> },
+  { caption: "ВЛ 10 кВ", link: "/out", icon: <ElectricBoltIcon /> },
+  { caption: "ВЛ 35 кВ и выше", link: "/letter", icon: <ElectricBoltIcon /> },
+  { caption: "КЛ 0,4 кВ", link: "/contract", icon: <ElectricBoltIcon /> },
+  { caption: "КЛ 10 кВ", link: "/contract", icon: <ElectricBoltIcon /> },
+  { caption: "Площадные", link: "/contract", icon: <ElectricBoltIcon /> },
 ];
 
 export const ADDITIONAL_MENU: MenuProps[] = [

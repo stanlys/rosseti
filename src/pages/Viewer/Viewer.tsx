@@ -1,8 +1,10 @@
 import { Tab, Tabs, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import FileList from "../../components/FileList/FileList";
 import LeafletMap from "../../components/Map/LeafletMap";
 import OMap from "../../components/Map/ObjectMap";
+import AddOutLetter from "../Outgoing/AddLetter/AddOutLetter";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -42,19 +44,19 @@ const Viewer = () => {
       <Tabs value={page} onChange={changePage} centered>
         <Tab label="Характеристики ОЭСХ" />
         <Tab label="Документы" />
-        <Tab label="Карта OpenLayers" />
-        <Tab label="Карта Leaflet" />
+        {/* <Tab label="Карта OpenLayers" /> */}
+        <Tab label="Карта" />
       </Tabs>
       <TabPanel value={page} index={0}>
-        Item One
+        <AddOutLetter />
       </TabPanel>
       <TabPanel value={page} index={1}>
-        Item Two
+        <FileList />
       </TabPanel>
-      <TabPanel value={page} index={2}>
+      {/* <TabPanel value={page} index={2}>
         <OMap />
-      </TabPanel>
-      <TabPanel value={page} index={3}>
+      </TabPanel> */}
+      <TabPanel value={page} index={2}>
         <LeafletMap />
       </TabPanel>
     </Box>

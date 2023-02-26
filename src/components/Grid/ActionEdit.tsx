@@ -13,7 +13,7 @@ export const ActionEditPreview: TypeColumn[] = [
     render: ({ data }) => {
       return (
         <>
-          <Link to={"filelist"} state={{objectId: data._id}}>
+          <Link to={"object"} state={{ objectId: data._id }}>
             <IconButton
               color="primary"
               onClick={() => {
