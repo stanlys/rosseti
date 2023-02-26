@@ -5,7 +5,6 @@ import React from "react";
 import { useSnackbar } from "notistack";
 import EntryField from "../../../../components/EntryField/EntryField";
 import { formFieldsDelivery } from "./formFields";
-import { INIT_DELIVERY } from "./initValue";
 import { validateYupDelivery } from "./validateForm";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { ICreatedDelivery, IDelivery } from "../../../../interfaces/delivery";
@@ -20,7 +19,11 @@ const AddDelivery = () => {
 
   const { values, errors, isValid, touched, handleChange, handleReset } =
     useFormik({
-      initialValues: INIT_DELIVERY,
+      initialValues: {
+        orgname: "",
+        website: "",
+        phone: "",
+      },
       validationSchema: validateYupDelivery,
       onSubmit: () => {},
     });
