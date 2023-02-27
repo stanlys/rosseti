@@ -13,8 +13,6 @@ import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { createOutgoingLetter } from "../../../store/outgoing/thunks";
 import FormTitle from "../../../components/FormTitle/FormTitle";
 import DateSelect from "../../../components/EntryField/DateSelect";
-import "react-dropzone-uploader/dist/styles.css";
-import Uploader from "../../../components/Uploader/Uploader";
 import { IDocument } from "../../../interfaces/letter";
 
 const AddOutLetter = () => {
@@ -79,7 +77,6 @@ const AddOutLetter = () => {
       <FormTitle caption="Добавление исходящего письма"></FormTitle>
       <Box component={"form"} onSubmit={submitForm}>
         <Paper elevation={2} className={style.form}>
-          <Uploader onDone={onDone} />
           <Box className={style.formControl}>
             <Box className={style.formControlArea}>
               <EntryField

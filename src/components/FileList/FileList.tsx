@@ -1,6 +1,5 @@
 import { Box, Divider, List, Typography } from "@mui/material";
 import React, { useEffect, useState, useRef } from "react";
-import { formatBytes } from "react-dropzone-uploader";
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 import { IDocument } from "../../interfaces/letter";
 import { useAppDispatch } from "../../store/hooks";
@@ -20,7 +19,6 @@ const INITIAL_STATE: IDocument = {
 };
 
 const FileList = () => {
-  const a = formatBytes(10);
   const [docs, setDocs] = useState<IDocument>(INITIAL_STATE);
   const viewer = useRef<HTMLDivElement>(null);
 
